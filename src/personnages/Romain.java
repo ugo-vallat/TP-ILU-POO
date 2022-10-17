@@ -82,13 +82,12 @@ public class Romain {
 		// equipementEjecte = ejecterEquipement();
 		// parler("J'abandonne...");
 		// }
-		switch (force) {
-		case 0:
+		if (force == 0) {
 			parler("Aïe");
-		default:
+		}
+			else {
 			equipementEjecte = ejecterEquipement();
 			parler("J'abandonne...");
-			break;
 		}
 		// post condition la force à diminuer
 		assert force < oldForce;
