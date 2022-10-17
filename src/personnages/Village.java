@@ -47,19 +47,27 @@ public class Village {
 		return(villageois[numGaulois-1]);
 	}
 	
+	public void afficherVillageois() {
+		System.out.println("Dans le village du chef " + chef.getNom() + " vivent les légendaires gaulois :");
+		for (int i = 0; i<nbVillageois; i++)
+			System.out.println("- " + villageois[i].getNom());
+	}
+	
 
 	public static void main(String[] args) {
-		Village village = new Village("Village des Irrï¿½ductibles", 30);
-		//Gaulois gaulois = village.trouverHabitant(30);
-		//Valeur non dï¿½finie
-		Chef chef = new Chef ("Abraracourcix", 8, village);
-		village.setChef(chef);
-		Gaulois Asterix = new Gaulois ("Asterix", 8);
-		village.ajouterHabitant(Asterix);
-		
-		Gaulois gaulois = village.trouverHabitant(1);
-		System.out.println("Tu cherchais " + gaulois.getNom() + " ?");
-		
+		Village village = new Village("Village des Irréductibles", 30);
+//		System.out.println(village.trouverHabitant(30));
+//		on obtient ArrayIndexOutOfBoundsException parce que l'on cherche un élément hors du tableau (31ème élément d'un taleau à 30 éléments)
+		Chef abraracourcix = new Chef("Abraracourcix", 6, village);
+		village.setChef(abraracourcix);
+		Gaulois asterix = new Gaulois("Astérix", 8);
+		village.ajouterHabitant(asterix);
+//		Gaulois gaulois = village.trouverHabitant(1);
+//		System.out.println(gaulois);
+//		on obtient gaulois = null car on cherche dans le tableau des villageois une case qui n'est pas encore occupée
+		Gaulois obelix = new Gaulois("Obélix", 25);
+		village.ajouterHabitant(obelix);
+		village.afficherVillageois();
 	}
 
 }
